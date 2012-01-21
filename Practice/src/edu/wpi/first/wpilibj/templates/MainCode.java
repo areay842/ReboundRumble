@@ -1,10 +1,14 @@
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Timer;
 
 public class MainCode extends IterativeRobot
 {
     private Joystick joy1;
+    private Joystick joy2;
     private RobotDrive drive;
     
     public void robotInit()
@@ -12,6 +16,7 @@ public class MainCode extends IterativeRobot
         try
         {
             joy1 = new Joystick(1);
+            joy2 = new Joystick(2);
             drive = new RobotDrive(1,2,3,4);
         }
         catch(Exception e)
@@ -20,14 +25,14 @@ public class MainCode extends IterativeRobot
         }
     }
     public void autonomousPeriodic() {
-        System.out.println("Periodic Section.");
+      System.out.println(" Autonomous Periodic Section.");
     }
 
     public void teleopPeriodic() {
         try
         {
             System.out.println("Teleop mode engaged.");
-            drive.arcadeDrive(joy1);
+            drive.tankDrive(joy1, joy2);
             Timer.delay(0.005);
         }
         catch(Exception e)
