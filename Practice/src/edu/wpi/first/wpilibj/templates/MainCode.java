@@ -32,6 +32,7 @@ public class MainCode extends IterativeRobot
         }
         catch(Exception e)
         {
+            
             System.out.println("error2: "+e);
         }
     }   
